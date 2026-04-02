@@ -900,10 +900,11 @@
       const rows = parseCSV(text);
       if (rows.length < 2) return;
       const h = rows[0].map(x => x.trim().toLowerCase());
-      const iN = h.findIndex(x => x === 'name');
-      const iE = h.findIndex(x => x.includes('vibrant email'));
-      const iP = h.findIndex(x => x.includes('925-2397'));
-      const iS = h.findIndex(x => x.includes('slack profile'));
+      // Columns: A=Name, B=Vibrant Email Address, C=Phone+EXT, D=Role, E=Responsibilities, F=Department, G=Dept Email, H=Slack
+      const iN = 0;
+      const iE = 1;
+      const iP = 2;
+      const iS = 7;
       const map = {};
       for (let i = 1; i < rows.length; i++) {
         const r = rows[i];
