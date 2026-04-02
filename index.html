@@ -29,7 +29,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
   }
 
@@ -280,9 +281,12 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 640px) {
     .cards { grid-template-columns: 1fr; }
-    .headline { font-size: 36px; }
+    .headline { font-size: 32px; }
+    .container { padding: 32px 20px 48px; }
+    .brand { margin-bottom: 32px; }
+    .subhead { margin-bottom: 36px; }
   }
 </style>
 </head>
