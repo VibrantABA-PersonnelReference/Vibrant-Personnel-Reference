@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Debug</title></head>
+<body style="font-family:monospace; padding:20px;">
+<h2>Sheet Fetch Debug</h2>
+<pre id="out">Loading...</pre>
+<script>
+const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1kOhll8-59nhaSwLkLGGHQSyisURvevDIxUIQM0OpCk4/export?format=csv';
+
+async function test() {
+  const out = document.getElementById('out');
+  try {
+    out.textContent = 'Fetching...';
+    const res = await fetch(SHEET_CSV);
+    out.textContent = 'Status: ' + res.status + '\n';
+    const text = await res.text();
+    out.textContent += 'First 500 chars:\n' + text.substring(0, 500);
+  } catch(e) {
+    out.textContent = 'ERROR: ' + e.message;
+  }
+}
+test();
+</script>
+</body>
+</html>
