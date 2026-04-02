@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet Your Team – BCBAs | Vibrant ABA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #AF5825;
+    --teal-light: #D4956A;
+    --teal-dark: #8B4218;
+    --amber: #E9C46A;
+    --coral: #A96255;
+    --cream: #F9F5EE;
+    --dark: #2C1F14;
+    --mid: #3D5550;
+    --muted: #8A7A68;
+    --border: #E8DDD0;
+    --card-bg: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  .header {
+    background: var(--teal-dark);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: var(--amber);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 200px; height: 200px;
+    background: var(--coral);
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .brand-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 14px;
+    padding: 5px 12px;
+    border: 1px solid rgba(233,196,106,0.3);
+    border-radius: 20px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .header h1 em {
+    color: var(--amber);
+    font-style: italic;
+  }
+
+  .header-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .role-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    background: rgba(233,196,106,0.12);
+    border: 1px solid rgba(233,196,106,0.3);
+    padding: 7px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amber);
+  }
+
+  .role-dot {
+    width: 7px; height: 7px;
+    background: var(--amber);
+    border-radius: 50%;
+  }
+
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .cards {
+    display: grid;
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 32px rgba(44,31,20,0.08);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.10s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.20s; }
+  .card:nth-child(5) { animation-delay: 0.25s; }
+  .card:nth-child(6) { animation-delay: 0.30s; }
+
+  .card-accent {
+    height: 4px;
+    background: var(--teal-dark);
+  }
+
+  .card:nth-child(2) .card-accent { background: var(--amber); }
+  .card:nth-child(3) .card-accent { background: var(--coral); }
+  .card:nth-child(4) .card-accent { background: var(--teal-light); }
+  .card:nth-child(5) .card-accent { background: #818865; }
+  .card:nth-child(6) .card-accent { background: #D4B896; }
+
+  .card-body {
+    padding: 24px 28px 28px;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  .card-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    background: rgba(175,88,37,0.08);
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .card:nth-child(2) .card-badge { color: #7A4A10; background: rgba(212,149,106,0.15); }
+  .card:nth-child(3) .card-badge { color: #8B3A22; background: rgba(169,98,85,0.1); }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* As Assigned banner */
+  .as-assigned {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--cream);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .as-assigned-icon {
+    width: 36px; height: 36px;
+    background: var(--teal-dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .card:nth-child(2) .as-assigned-icon { background: var(--amber); }
+
+  .as-assigned-text .alabel {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .as-assigned-text .avalue {
+    font-size: 15px; font-weight: 600; color: var(--dark);
+  }
+
+  .cm-roster { display: grid; gap: 10px; }
+
+  .cm-tier {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+
+  .cm-tier-label {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 10px;
+  }
+
+  .cm-names { display: flex; flex-direction: column; gap: 8px; }
+
+  .cm-person {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .cm-person:hover { box-shadow: 0 2px 12px rgba(44,31,20,0.07); }
+
+  .cm-person-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .cm-chip-dot {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--dark);
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cm-person.supervisor .cm-chip-dot { background: var(--teal-dark); color: white; }
+  .cm-person.senior .cm-chip-dot { background: var(--teal); color: white; }
+
+  .cm-person-name { font-size: 14px; font-weight: 600; color: var(--dark); flex: 1; }
+  .cm-role { font-size: 11px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+
+  .cm-chevron { font-size: 11px; color: var(--muted); transition: transform 0.2s; margin-left: auto; }
+  .cm-person.open .cm-chevron { transform: rotate(180deg); }
+
+  .cm-contact-drawer { display: none; padding: 0 14px 14px 54px; gap: 12px; }
+  .cm-person.open .cm-contact-drawer { display: flex; flex-wrap: wrap; }
+
+  .cm-contact-item { display: flex; align-items: center; gap: 7px; min-width: 160px; flex: 1; }
+
+  .cm-contact-icon {
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; flex-shrink: 0;
+  }
+
+  .cm-contact-text .cm-clabel {
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); display: block;
+  }
+
+  .cm-contact-text .cm-cvalue { font-size: 12px; font-weight: 500; color: var(--dark); }
+  .cm-contact-text .cm-cvalue.empty { color: var(--muted); font-style: italic; font-weight: 300; }
+  a.cvalue, a.cm-cvalue {
+    color: var(--teal-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: inherit;
+  }
+  a.cvalue:hover, a.cm-cvalue:hover { text-decoration: underline; }
+
+  .name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--cream);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+
+  .name-icon {
+    width: 34px; height: 34px;
+    background: var(--teal-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .card:nth-child(2) .name-icon { background: var(--amber); color: var(--dark); }
+  .card:nth-child(3) .name-icon { background: var(--coral); }
+  .card:nth-child(4) .name-icon { background: var(--teal-light); }
+  .card:nth-child(5) .name-icon { background: #818865; }
+  .card:nth-child(6) .name-icon { background: #D4B896; color: var(--dark); }
+
+  .name-info .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .name-info .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .name-info .value.empty {
+    color: var(--muted);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .contact-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+
+  .contact-text .clabel {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+  }
+
+  .contact-text .cvalue {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dark);
+    word-break: break-all;
+  }
+
+  .contact-text .cvalue.empty {
+    color: var(--muted);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .footer {
+    background: var(--dark);
+    padding: 32px;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .footer-logo span { color: var(--teal-light); }
+
+  .footer-contact {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 2;
+  }
+
+  .footer-contact a {
+    color: var(--teal-light);
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .header-inner, .main { padding-left: 20px; padding-right: 20px; }
+    .card-body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand-tag">Vibrant ABA</div>
+    <h1>Meet Your Team<br><em>BCBAs</em></h1>
+    <p class="header-sub">Every person listed below is here to support your leadership and help your clients thrive.</p>
+    <div class="role-pill">
+      <span class="role-dot"></span>
+      BCBA Reference Guide
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <p class="section-label">Your Contacts</p>
+
+  <div class="cards">
+
+    <!-- RCD -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Your Regional Clinical Director</div>
+          <div class="card-badge">Clinical Leadership</div>
+        </div>
+        <p class="card-desc">Your direct clinical leader for oversight and support. Provides clinical leadership, supports decision-making, and ensures quality across your caseload. A key resource for guidance, escalation, and professional growth.</p>
+        <div class="cm-roster">
+          <div class="cm-names">
+            <div class="cm-person supervisor">
+              <button class="cm-person-trigger" onclick="toggleCM(this)">
+                <div class="cm-chip-dot">H</div>
+                <span class="cm-person-name">Hilary <span class="cm-role">Regional Clinical Director</span></span>
+                <span class="cm-chevron">▼</span>
+              </button>
+              <div class="cm-contact-drawer" data-contact-name="Hilary">
+                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BTs -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Your BTs</div>
+          <div class="card-badge">Direct Care</div>
+        </div>
+        <p class="card-desc">Your Behavior Technicians work directly with your clients to implement therapy programs under your supervision. They are your hands-on partners in delivering quality care.</p>
+        <div class="as-assigned">
+          <div class="as-assigned-icon">🧑‍⚕️</div>
+          <div class="as-assigned-text">
+            <div class="alabel">Assigned To</div>
+            <div class="avalue">As Assigned</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Manager -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Your Case Manager</div>
+          <div class="card-badge">Scheduling</div>
+        </div>
+        <p class="card-desc">Supports your caseload by coordinating schedules, managing assignments, and ensuring smooth day-to-day operations.<br><br><em>*Please refer to your assigned Case Manager before escalating the issue.</em></p>
+        <div class="cm-roster">
+          <div class="cm-tier">
+            <div class="cm-tier-label">Supervision</div>
+            <div class="cm-names">
+              <div class="cm-person supervisor">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">J</div>
+                  <span class="cm-person-name">Jaileen <span class="cm-role">Case Management Supervisor</span></span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Jaileen">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cm-tier">
+            <div class="cm-tier-label">Senior</div>
+            <div class="cm-names">
+              <div class="cm-person senior">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">N</div>
+                  <span class="cm-person-name">Nicole <span class="cm-role">Sr. Case Manager</span></span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Nicole">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cm-tier">
+            <div class="cm-tier-label">Case Managers — As Assigned</div>
+            <div class="cm-names">
+              <div class="cm-person">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">A</div>
+                  <span class="cm-person-name">Alanna</span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Alanna">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+                </div>
+              </div>
+              <div class="cm-person">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">A</div>
+                  <span class="cm-person-name">Andrielle</span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Andrielle">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+                </div>
+              </div>
+              <div class="cm-person">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">D</div>
+                  <span class="cm-person-name">Dania</span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Dania">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+                </div>
+              </div>
+              <div class="cm-person">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">E</div>
+                  <span class="cm-person-name">Emily</span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Emily">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+                </div>
+              </div>
+              <div class="cm-person">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">K</div>
+                  <span class="cm-person-name">Kaisha</span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Kaisha">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+                </div>
+              </div>
+              <div class="cm-person">
+                <button class="cm-person-trigger" onclick="toggleCM(this)">
+                  <div class="cm-chip-dot">N</div>
+                  <span class="cm-person-name">Nia</span>
+                  <span class="cm-chevron">▼</span>
+                </button>
+                <div class="cm-contact-drawer" data-contact-name="Nia">
+                  <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                  <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assessments -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Assessments</div>
+          <div class="card-badge">Evaluations</div>
+        </div>
+        <p class="card-desc">Oversees all client assessments, serving as the point of contact for initial evaluations, reassessments, and ensuring accurate clinical data to guide treatment decisions.</p>
+        <div class="cm-roster">
+          <div class="cm-names">
+            <div class="cm-person supervisor">
+              <button class="cm-person-trigger" onclick="toggleCM(this)">
+                <div class="cm-chip-dot">R</div>
+                <span class="cm-person-name">Renee <span class="cm-role">Director of Assessments</span></span>
+                <span class="cm-chevron">▼</span>
+              </button>
+              <div class="cm-contact-drawer" data-contact-name="Renee">
+                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+              </div>
+            </div>
+            <div class="cm-person">
+              <button class="cm-person-trigger" onclick="toggleCM(this)">
+                <div class="cm-chip-dot">A</div>
+                <span class="cm-person-name">Amela <span class="cm-role">Assessment Specialist</span></span>
+                <span class="cm-chevron">▼</span>
+              </button>
+              <div class="cm-contact-drawer" data-contact-name="Amela">
+                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div>
+              </div>
+            </div>
+            <div class="cm-person senior">
+              <button class="cm-person-trigger" onclick="toggleCM(this)">
+                <div class="cm-chip-dot">N</div>
+                <span class="cm-person-name">Nechama <span class="cm-role">Authorizations Manager</span></span>
+                <span class="cm-chevron">▼</span>
+              </button>
+              <div class="cm-contact-drawer" data-contact-name="Nechama">
+                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Training -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Training & Development</div>
+          <div class="card-badge">Growth</div>
+        </div>
+        <p class="card-desc">Supports your professional development, leadership growth, and training initiatives across the organization.</p>
+        <div class="cm-roster">
+          <div class="cm-names">
+            <div class="cm-person supervisor">
+              <button class="cm-person-trigger" onclick="toggleCM(this)">
+                <div class="cm-chip-dot">K</div>
+                <span class="cm-person-name">Kelsey <span class="cm-role">Director of Clinical Development</span></span>
+                <span class="cm-chevron">▼</span>
+              </button>
+              <div class="cm-contact-drawer" data-contact-name="Kelsey">
+                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QA -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Quality Assurance</div>
+          <div class="card-badge">Compliance</div>
+        </div>
+        <p class="card-desc">Reviews documentation and processes to ensure the highest standard of care across all services.</p>
+        <div class="cm-roster">
+          <div class="cm-names">
+            <div class="cm-person supervisor">
+              <button class="cm-person-trigger" onclick="toggleCM(this)">
+                <div class="cm-chip-dot">G</div>
+                <span class="cm-person-name">Gedalia <span class="cm-role">Clinical Documentation Specialist</span></span>
+                <span class="cm-chevron">▼</span>
+              </button>
+              <div class="cm-contact-drawer" data-contact-name="Gedalia">
+                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email" style="display:none">—</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payroll -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Payroll</div>
+          <div class="card-badge">Compensation</div>
+        </div>
+        <p class="card-desc">Supports all payroll-related matters including compensation, pay cycles, and payroll inquiries.</p>
+        <div class="name-row">
+          <div class="name-icon">M</div>
+          <div class="name-info">
+            <div class="label">Payroll Contact</div>
+            <div class="value">Mendel</div>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div class="contact-text">
+              <span class="clabel">Slack</span>
+              <a href="#" class="cvalue js-slack" style="display:none">Open Slack</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <span class="clabel">Email</span>
+              <a href="#" class="cvalue js-email" style="display:none">—</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text">
+              <span class="clabel">Phone / Ext.</span>
+              <span class="cvalue js-phone">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR -->
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title">Human Resources</div>
+          <div class="card-badge">HR & Onboarding</div>
+        </div>
+        <p class="card-desc">Supports all HR-related needs including onboarding, employment questions, and ongoing support throughout your time with Vibrant ABA.</p>
+        <div class="name-row">
+          <div class="name-icon">S</div>
+          <div class="name-info">
+            <div class="label">HR Contact</div>
+            <div class="value">Shantelle</div>
+          </div>
+        </div>
+        <div class="contact-grid" data-contact-name="Shantelle">
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div class="contact-text">
+              <span class="clabel">Slack</span>
+              <a href="#" class="cvalue js-slack" style="display:none">Open Slack</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <span class="clabel">Email</span>
+              <a href="#" class="cvalue js-email" style="display:none">—</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text">
+              <span class="clabel">Phone / Ext.</span>
+              <span class="cvalue js-phone">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Vibrant <span>ABA</span></div>
+    <div class="footer-contact">
+      <a href="https://vibrantaba.com">vibrantaba.com</a> &nbsp;·&nbsp;
+      <a href="tel:7189252397">(718) 925-2397</a> &nbsp;·&nbsp;
+      46 Cook St, Brooklyn, NY 11206
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function toggleCM(btn) {
+    const person = btn.closest('.cm-person');
+    person.classList.toggle('open');
+  }
+
+  const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1kOhll8-59nhaSwLkLGGHQSyisURvevDIxUIQM0OpCk4/export?format=csv';
+
+  async function loadContacts() {
+    try {
+      const res = await fetch(SHEET_CSV);
+      if (!res.ok) throw new Error('fetch failed');
+      const text = await res.text();
+      const rows = parseCSV(text);
+      if (rows.length < 2) return;
+      const h = rows[0].map(x => x.trim().toLowerCase());
+      // Columns: A=Name, B=Vibrant Email Address, C=Phone+EXT, D=Role, E=Responsibilities, F=Department, G=Dept Email, H=Slack
+      const iN = 0;
+      const iE = 1;
+      const iP = 2;
+      const iS = 7;
+      const map = {};
+      for (let i = 1; i < rows.length; i++) {
+        const r = rows[i];
+        const full = (r[iN]||'').trim();
+        if (!full) continue;
+        map[full.split(' ')[0].toLowerCase()] = {
+          email: (r[iE]||'').trim(),
+          phone: (r[iP]||'').trim(),
+          slack: (r[iS]||'').trim()
+        };
+      }
+      console.log('Map keys:', Object.keys(map));
+      const els = document.querySelectorAll('[data-contact-name]');
+      console.log('Elements found:', els.length);
+      els.forEach(el => {
+        const key = el.dataset.contactName.toLowerCase();
+        const d = map[key];
+        console.log('Processing:', key, '-> found:', !!d);
+        if (!d) return;
+        const sa = el.querySelector('.js-slack');
+        const ea = el.querySelector('.js-email');
+        const pe = el.querySelector('.js-phone');
+        console.log('  slack el:', !!sa, 'email el:', !!ea, 'phone el:', !!pe);
+        if (sa && d.slack) { sa.href = d.slack; sa.textContent = 'Open Slack'; sa.style.display=''; }
+        if (ea && d.email) { ea.href = 'mailto:'+d.email; ea.textContent = d.email; ea.style.display=''; }
+        if (pe && d.phone) pe.textContent = '(718) 925-2397 ext. ' + d.phone;
+      });
+    } catch(e) { console.warn('Sheets error:', e); }
+  }
+
+  function parseCSV(t) {
+    const rows=[]; let row=[],f='',q=false;
+    for(let i=0;i<t.length;i++){
+      const c=t[i];
+      if(q){ if(c==='"'&&t[i+1]==='"'){f+='"';i++;} else if(c==='"')q=false; else f+=c; }
+      else{ if(c==='"')q=true; else if(c===','){row.push(f);f='';} else if(c==='
+'){row.push(f);rows.push(row);row=[];f='';} else if(c!=='
+')f+=c; }
+    }
+    if(f||row.length){row.push(f);rows.push(row);}
+    return rows;
+  }
+
+  loadContacts();
+</script>
+
+</body>
+</html>
