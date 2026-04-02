@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Debug</title></head>
-<body style="font-family:monospace; padding:20px;">
-<h2>Sheet Fetch Debug</h2>
+<head><meta charset="UTF-8"><title>Debug v2</title></head>
+<body style="font-family:monospace; padding:20px; font-size:13px;">
+<h2>Sheet Fetch Debug v2</h2>
 <pre id="out">Loading...</pre>
 <script>
 const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1kOhll8-59nhaSwLkLGGHQSyisURvevDIxUIQM0OpCk4/export?format=csv';
@@ -10,17 +10,52 @@ const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1kOhll8-59nhaSwLkLGGHQ
 async function test() {
   const out = document.getElementById('out');
   try {
-    out.textContent = 'Fetching...';
     const res = await fetch(SHEET_CSV);
-    out.textContent = 'Status: ' + res.status + '\n';
     const text = await res.text();
-    out.textContent += 'First 500 chars:\n' + text.substring(0, 500);
+    const rows = parseCSV(text);
+
+    const headers = rows[0].map(h => h.trim().toLowerCase());
+    out.textContent = '=== HEADERS (lowercase) ===\n';
+    headers.forEach((h, i) => { out.textContent += `Col ${i}: "${h}"\n`; });
+
+    const iN = headers.findIndex(x => x === 'name');
+    const iE = headers.findIndex(x => x.includes('vibrant email'));
+    const iP = headers.findIndex(x => x.includes('925-2397'));
+    const iS = headers.findIndex(x => x.includes('slack profile'));
+
+    out.textContent += `\n=== COLUMN MATCHES ===\n`;
+    out.textContent += `Name col: ${iN}\nEmail col: ${iE}\nPhone col: ${iP}\nSlack col: ${iS}\n`;
+
+    out.textContent += `\n=== FIRST 3 DATA ROWS ===\n`;
+    for (let i = 1; i <= 3 && i < rows.length; i++) {
+      const r = rows[i];
+      out.textContent += `Row ${i}: name="${r[iN]}" email="${r[iE]}" phone="${r[iP]}" slack="${(r[iS]||'').substring(0,50)}"\n`;
+    }
+
+    out.textContent += `\n=== LOOKUP FOR "shantelle" ===\n`;
+    for (let i = 1; i < rows.length; i++) {
+      const name = (rows[i][iN]||'').trim();
+      if (name.toLowerCase().startsWith('shantelle')) {
+        out.textContent += `Found: "${name}"\n  email: "${rows[i][iE]}"\n  phone: "${rows[i][iP]}"\n  slack: "${rows[i][iS]}"\n`;
+      }
+    }
   } catch(e) {
-    out.textContent = 'ERROR: ' + e.message;
+    out.textContent = 'ERROR: ' + e.message + '\n' + e.stack;
   }
 }
+
+function parseCSV(t) {
+  const rows=[]; let row=[],f='',q=false;
+  for(let i=0;i<t.length;i++){
+    const c=t[i];
+    if(q){ if(c==='"'&&t[i+1]==='"'){f+='"';i++;} else if(c==='"')q=false; else f+=c; }
+    else{ if(c==='"')q=true; else if(c===','){row.push(f);f='';} else if(c==='\n'){row.push(f);rows.push(row);row=[];f='';} else if(c!=='\r')f+=c; }
+  }
+  if(f||row.length){row.push(f);rows.push(row);}
+  return rows;
+}
+
 test();
 </script>
 </body>
 </html>
- 
