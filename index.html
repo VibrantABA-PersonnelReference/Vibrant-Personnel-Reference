@@ -20,6 +20,12 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html {
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--dark);
@@ -31,6 +37,7 @@
     justify-content: center;
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     position: relative;
   }
 
@@ -291,6 +298,22 @@
 </style>
 </head>
 <body>
+
+
+<div id="open-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:9999; background:#AF5825; color:white; padding:12px 16px; text-align:center; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:500;">
+  For the best experience — <a href="" id="open-link" style="color:#E9C46A; font-weight:700; text-decoration:underline;">Open in Browser</a>
+</div>
+<script>
+  // Detect Slack in-app browser
+  if (/Slack/.test(navigator.userAgent) || /FBAN|FBAV|Instagram|Twitter|LinkedInApp/.test(navigator.userAgent)) {
+    var banner = document.getElementById('open-banner');
+    var link = document.getElementById('open-link');
+    banner.style.display = 'block';
+    link.href = window.location.href;
+    // Push content down so banner doesn't cover it
+    document.body.style.paddingTop = '48px';
+  }
+</script>
 
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
