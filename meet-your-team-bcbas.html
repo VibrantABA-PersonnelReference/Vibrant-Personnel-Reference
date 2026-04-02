@@ -901,8 +901,8 @@
       if (rows.length < 2) return;
       const h = rows[0].map(x => x.trim().toLowerCase());
       const iN = h.findIndex(x => x === 'name');
-      const iE = h.findIndex(x => x.includes('email'));
-      const iP = h.findIndex(x => x.includes('phone') || x.includes('ext'));
+      const iE = h.findIndex(x => x.includes('email address'));
+      const iP = h.findIndex(x => x.includes('ext'));
       const iS = h.findIndex(x => x.includes('slack'));
       const map = {};
       for (let i = 1; i < rows.length; i++) {
