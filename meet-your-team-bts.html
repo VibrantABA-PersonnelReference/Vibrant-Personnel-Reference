@@ -859,9 +859,7 @@
     for(let i=0;i<t.length;i++){
       const c=t[i];
       if(q){ if(c==='"'&&t[i+1]==='"'){f+='"';i++;} else if(c==='"')q=false; else f+=c; }
-      else{ if(c==='"')q=true; else if(c===','){row.push(f);f='';} else if(c==='
-'){row.push(f);rows.push(row);row=[];f='';} else if(c!=='
-')f+=c; }
+      else{ if(c==='"')q=true; else if(c===','){row.push(f);f='';} else if(c==='\n'){row.push(f);rows.push(row);row=[];f='';} else if(c!=='\r')f+=c; }
     }
     if(f||row.length){row.push(f);rows.push(row);}
     return rows;
