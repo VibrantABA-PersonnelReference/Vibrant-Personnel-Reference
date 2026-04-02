@@ -7,15 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #2A9D8F;
-    --teal-light: #52B5A9;
-    --teal-dark: #1E7268;
+    --teal: #AF5825;
+    --teal-light: #D4956A;
+    --teal-dark: #8B4218;
     --amber: #E9C46A;
-    --coral: #E76F51;
-    --cream: #FAFAF7;
-    --dark: #1A2E2C;
-    --muted: #7A9490;
-    --border: #D6E8E6;
+    --coral: #A96255;
+    --cream: #F9F5EE;
+    --dark: #2C1F14;
+    --muted: #8A7A68;
+    --border: #E8DDD0;
     --card-bg: #FFFFFF;
   }
 
@@ -71,7 +71,7 @@
     color: var(--teal-light);
     margin-bottom: 14px;
     padding: 5px 12px;
-    border: 1px solid rgba(82,181,169,0.3);
+    border: 1px solid rgba(212,149,106,0.3);
     border-radius: 20px;
   }
 
@@ -98,8 +98,8 @@
     align-items: center;
     gap: 8px;
     margin-top: 20px;
-    background: rgba(42,157,143,0.15);
-    border: 1px solid rgba(42,157,143,0.3);
+    background: rgba(175,88,37,0.15);
+    border: 1px solid rgba(175,88,37,0.3);
     padding: 7px 16px;
     border-radius: 30px;
     font-size: 13px;
@@ -143,7 +143,7 @@
   }
 
   .card:hover {
-    box-shadow: 0 8px 32px rgba(26,46,44,0.08);
+    box-shadow: 0 8px 32px rgba(44,31,20,0.08);
     transform: translateY(-2px);
   }
 
@@ -163,8 +163,8 @@
   .card:nth-child(2) .card-accent { background: var(--amber); }
   .card:nth-child(3) .card-accent { background: var(--coral); }
   .card:nth-child(4) .card-accent { background: var(--teal-light); }
-  .card:nth-child(5) .card-accent { background: #6A9E8A; }
-  .card:nth-child(6) .card-accent { background: #A8B5A0; }
+  .card:nth-child(5) .card-accent { background: #818865; }
+  .card:nth-child(6) .card-accent { background: #D4B896; }
 
   .card-body { padding: 24px 28px 28px; }
 
@@ -190,15 +190,15 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--teal-dark);
-    background: rgba(42,157,143,0.08);
+    background: rgba(175,88,37,0.08);
     padding: 4px 10px;
     border-radius: 20px;
     white-space: nowrap;
   }
 
-  .card:nth-child(2) .card-badge { color: #8B6914; background: rgba(233,196,106,0.15); }
-  .card:nth-child(3) .card-badge { color: #9B3D28; background: rgba(231,111,81,0.1); }
-  .card:nth-child(4) .card-badge { color: #2A7A6E; background: rgba(82,181,169,0.12); }
+  .card:nth-child(2) .card-badge { color: #7A4A10; background: rgba(212,149,106,0.15); }
+  .card:nth-child(3) .card-badge { color: #8B3A22; background: rgba(169,98,85,0.1); }
+  .card:nth-child(4) .card-badge { color: #7A4A10; background: rgba(212,149,106,0.12); }
 
   .card-desc {
     font-size: 14px;
@@ -277,7 +277,7 @@
     transition: box-shadow 0.2s;
   }
 
-  .cm-person:hover { box-shadow: 0 2px 12px rgba(26,46,44,0.07); }
+  .cm-person:hover { box-shadow: 0 2px 12px rgba(44,31,20,0.07); }
 
   .cm-person-trigger {
     display: flex;
@@ -399,8 +399,8 @@
   }
 
   .card:nth-child(4) .name-icon { background: var(--teal-light); }
-  .card:nth-child(5) .name-icon { background: #6A9E8A; }
-  .card:nth-child(6) .name-icon { background: #A8B5A0; color: var(--dark); }
+  .card:nth-child(5) .name-icon { background: #818865; }
+  .card:nth-child(6) .name-icon { background: #D4B896; color: var(--dark); }
 
   .name-info .nlabel {
     font-size: 10px; font-weight: 600;
@@ -687,6 +687,18 @@
                 <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="https://vibrant.enterprise.slack.com/team/U0ABYLUKV3N" class="cm-cvalue">@kburke</a></div></div>
                 <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="mailto:kyeager@vibrantaba.com" class="cm-cvalue">kyeager@vibrantaba.com</a></div></div>
                 <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue">(718) 925-2397 ext. 217</span></div></div>
+              </div>
+            </div>
+            <div class="cm-person senior">
+              <button class="cm-person-trigger" onclick="toggleCM(this)">
+                <div class="cm-chip-dot">M</div>
+                <span class="cm-person-name">Masha <span class="cm-role">BT Curriculum and Training</span></span>
+                <span class="cm-chevron">▼</span>
+              </button>
+              <div class="cm-contact-drawer">
+                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="https://vibrant.enterprise.slack.com/team/U0ABQB289NZ" class="cm-cvalue">@mgaranovskiy</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="mailto:mgaranovskiy@vibrantaba.com" class="cm-cvalue">mgaranovskiy@vibrantaba.com</a></div></div>
+                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue">(718) 925-2397 ext. 218</span></div></div>
               </div>
             </div>
           </div>
