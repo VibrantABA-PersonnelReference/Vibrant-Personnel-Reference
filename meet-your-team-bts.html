@@ -862,11 +862,28 @@
         const pe = el.querySelector('.js-phone');
         console.log('  slack el:', !!sa, 'email el:', !!ea, 'phone el:', !!pe);
         if (sa && d.slack) {
-          // Convert web URL to deep link
           const uid = d.slack.split('/team/')[1] || '';
-          sa.href = uid ? 'slack://user?team=E0AB6PJ6GUU&id=' + uid : d.slack;
+          const deepLink = uid ? 'slack://user?team=E0AB6PJ6GUU&id=' + uid : null;
           sa.textContent = 'Open Slack';
-          sa.style.display='';
+          sa.style.display = '';
+          sa.href = '#';
+          sa.setAttribute('data-web', d.slack);
+          sa.setAttribute('data-deep', deepLink || d.slack);
+          sa.addEventListener('click', function(e) {
+            e.preventDefault();
+            const deep = this.getAttribute('data-deep');
+            const web = this.getAttribute('data-web');
+            // Try deep link first
+            window.location = deep;
+            // If app doesn't open within 1.2s, fall back to web URL
+            const fallback = setTimeout(function() {
+              window.open(web, '_blank');
+            }, 1200);
+            // Cancel fallback if page loses focus (app opened)
+            window.addEventListener('blur', function() {
+              clearTimeout(fallback);
+            }, {once: true});
+          });
         }
         if (ea && d.email) { ea.href = 'mailto:'+d.email; ea.textContent = d.email; ea.style.display=''; }
         if (pe && d.phone) pe.textContent = '(718) 925-2397 ext. ' + d.phone;
