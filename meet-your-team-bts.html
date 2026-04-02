@@ -820,9 +820,9 @@
       if (rows.length < 2) return;
       const h = rows[0].map(x => x.trim().toLowerCase());
       const iN = h.findIndex(x => x === 'name');
-      const iE = h.findIndex(x => x.includes('email address'));
-      const iP = h.findIndex(x => x.includes('ext'));
-      const iS = h.findIndex(x => x.includes('slack'));
+      const iE = h.findIndex(x => x.includes('vibrant email'));
+      const iP = h.findIndex(x => x.includes('925-2397'));
+      const iS = h.findIndex(x => x.includes('slack profile'));
       const map = {};
       for (let i = 1; i < rows.length; i++) {
         const r = rows[i];
@@ -842,7 +842,7 @@
         const ea = el.querySelector('.js-email');
         if (ea && d.email) { ea.href = 'mailto:'+d.email; ea.textContent = d.email; ea.style.display=''; }
         const pe = el.querySelector('.js-phone');
-        if (pe && d.phone) pe.textContent = d.phone;
+        if (pe && d.phone) pe.textContent = '(718) 925-2397 ext. ' + d.phone;
       });
     } catch(e) { console.warn('Sheets error:', e); }
   }
