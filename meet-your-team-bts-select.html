@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Your Case Manager | Vibrant ABA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #AF5825;
+    --teal-light: #D4956A;
+    --teal-dark: #8B4218;
+    --amber: #E9C46A;
+    --coral: #A96255;
+    --cream: #F9F5EE;
+    --dark: #2C1F14;
+    --muted: #8A7A68;
+    --border: #E8DDD0;
+    --card-bg: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: var(--teal);
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 200px; height: 200px;
+    background: var(--amber);
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .brand-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 14px;
+    padding: 5px 12px;
+    border: 1px solid rgba(212,149,106,0.3);
+    border-radius: 20px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .header h1 em { color: var(--amber); font-style: italic; }
+
+  .header-sub {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--teal-light);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 1; }
+
+  /* Main */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  .tier-group {
+    margin-bottom: 32px;
+  }
+
+  .tier-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding: 0 4px;
+  }
+
+  .cm-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  /* CM selection card */
+  .cm-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--dark);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .cm-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(44,31,20,0.08);
+    border-color: var(--teal-light);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cm-card:nth-child(1) { animation-delay: 0.05s; }
+  .cm-card:nth-child(2) { animation-delay: 0.10s; }
+  .cm-card:nth-child(3) { animation-delay: 0.15s; }
+  .cm-card:nth-child(4) { animation-delay: 0.20s; }
+  .cm-card:nth-child(5) { animation-delay: 0.25s; }
+  .cm-card:nth-child(6) { animation-delay: 0.30s; }
+
+  .cm-avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--dark);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .cm-avatar.supervisor { background: var(--teal-dark); color: white; }
+  .cm-avatar.senior { background: var(--teal); color: white; }
+
+  .cm-info { flex: 1; }
+
+  .cm-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .cm-title {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .cm-arrow {
+    font-size: 18px;
+    color: var(--teal-light);
+    font-weight: 300;
+  }
+
+  /* Footer */
+  .footer { background: var(--dark); padding: 32px; text-align: center; }
+  .footer-inner { max-width: 900px; margin: 0 auto; }
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 20px; color: white; margin-bottom: 8px; }
+  .footer-logo span { color: var(--teal-light); }
+  .footer-contact { font-size: 13px; color: var(--muted); line-height: 2; }
+  .footer-contact a { color: var(--teal-light); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .header-inner, .main { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="back-link">← Back</a>
+    <div class="brand-tag">Vibrant ABA</div>
+    <h1>Select Your<br><em>Case Manager</em></h1>
+    <p class="header-sub">Tap the name of your assigned Case Manager to view your personalized team page.</p>
+  </div>
+</header>
+
+<main class="main">
+  <p class="section-label">Case Management Team</p>
+
+  <!-- Senior -->
+  <div class="tier-group">
+    <div class="tier-label">Senior Case Manager</div>
+    <div class="cm-grid">
+      <a class="cm-card" href="meet-your-team-bts-nicole.html">
+        <div class="cm-avatar senior">N</div>
+        <div class="cm-info">
+          <div class="cm-name">Nicole</div>
+          <div class="cm-title">Sr. Case Manager</div>
+        </div>
+        <div class="cm-arrow">›</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Case Managers -->
+  <div class="tier-group">
+    <div class="tier-label">Case Managers</div>
+    <div class="cm-grid">
+      <a class="cm-card" href="meet-your-team-bts-alanna.html">
+        <div class="cm-avatar">A</div>
+        <div class="cm-info">
+          <div class="cm-name">Alanna</div>
+          <div class="cm-title">Case Manager</div>
+        </div>
+        <div class="cm-arrow">›</div>
+      </a>
+      <a class="cm-card" href="meet-your-team-bts-dania.html">
+        <div class="cm-avatar">D</div>
+        <div class="cm-info">
+          <div class="cm-name">Dania</div>
+          <div class="cm-title">Case Manager</div>
+        </div>
+        <div class="cm-arrow">›</div>
+      </a>
+      <a class="cm-card" href="meet-your-team-bts-emily.html">
+        <div class="cm-avatar">E</div>
+        <div class="cm-info">
+          <div class="cm-name">Emily</div>
+          <div class="cm-title">Case Manager</div>
+        </div>
+        <div class="cm-arrow">›</div>
+      </a>
+      <a class="cm-card" href="meet-your-team-bts-kaisha.html">
+        <div class="cm-avatar">K</div>
+        <div class="cm-info">
+          <div class="cm-name">Kaisha</div>
+          <div class="cm-title">Case Manager</div>
+        </div>
+        <div class="cm-arrow">›</div>
+      </a>
+      <a class="cm-card" href="meet-your-team-bts-krystal.html">
+        <div class="cm-avatar">K</div>
+        <div class="cm-info">
+          <div class="cm-name">Krystal</div>
+          <div class="cm-title">Case Manager</div>
+        </div>
+        <div class="cm-arrow">›</div>
+      </a>
+      <a class="cm-card" href="meet-your-team-bts-nia.html">
+        <div class="cm-avatar">N</div>
+        <div class="cm-info">
+          <div class="cm-name">Nia</div>
+          <div class="cm-title">Case Manager</div>
+        </div>
+        <div class="cm-arrow">›</div>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Vibrant <span>ABA</span></div>
+    <div class="footer-contact">
+      <a href="https://vibrantaba.com">vibrantaba.com</a> &nbsp;·&nbsp;
+      <a href="tel:7189252397">(718) 925-2397</a> &nbsp;·&nbsp;
+      46 Cook St, Brooklyn, NY 11206
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
