@@ -522,25 +522,35 @@
           <div class="card-badge">Scheduling</div>
         </div>
         <p class="card-desc">Helps coordinate your schedule, manages case assignments, and supports you with any scheduling changes or availability updates.<br><br><em>*Please refer to your assigned Case Manager before escalating the issue.</em></p>
-        <div class="cm-roster">
-          <div class="cm-names">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;">Your Primary Contact</div><div class="cm-person ">
-              <button class="cm-person-trigger" onclick="toggleCM(this)">
-                <div class="cm-chip-dot" style="background:var(--amber);">K</div>
-                <span class="cm-person-name">Kaisha <span class="cm-role">Case Manager</span></span>
-                <span class="cm-chevron">▼</span>
-              </button>
-              <div class="cm-contact-drawer" data-contact-name="Kaisha">
-                <div class="cm-contact-item"><div class="cm-contact-icon">💬</div><div class="cm-contact-text"><span class="cm-clabel">Slack</span><a href="#" class="cm-cvalue js-slack" style="display:none">Open Slack</a></div></div>
-                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email">—</a></div></div>
-                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div>
-              </div>
+        <div class="name-row">
+          <div class="name-icon" style="background:var(--amber);">K</div>
+          <div class="name-info">
+            <div class="nlabel">Case Manager</div>
+            <div class="nvalue">Kaisha <span style="font-size:12px;font-weight:400;color:var(--muted);">Case Manager</span></div>
+          </div>
+        </div>
+        <div class="contact-grid" data-contact-name="Kaisha">
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div class="contact-text">
+              <span class="clabel">Slack</span>
+              <a href="#" class="cvalue js-slack" style="display:none">Open Slack</a>
             </div>
-                <div class="cm-contact-item"><div class="cm-contact-icon">✉️</div><div class="cm-contact-text"><span class="cm-clabel">Email</span><a href="#" class="cm-cvalue js-email">—</a></div></div>
-                <div class="cm-contact-item"><div class="cm-contact-icon">📞</div><div class="cm-contact-text"><span class="cm-clabel">Phone / Ext.</span><span class="cm-cvalue js-phone">—</span></div></div>
-              </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <span class="clabel">Email</span>
+              <a href="#" class="cvalue js-email">—</a>
             </div>
-</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text">
+              <span class="clabel">Phone / Ext.</span>
+              <span class="cvalue js-phone">—</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
